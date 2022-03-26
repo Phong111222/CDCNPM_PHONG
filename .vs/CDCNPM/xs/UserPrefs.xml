@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{31B2EC35-159A-414B-A124-9C420D942061}|Default">
+  <MonoDevelop.Ide.ItemProperties.CDCNPM PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CDCNPM/Models/SqlColumn.cs">
+    <Files>
+      <File FileName="CDCNPM/Startup.cs" Line="34" Column="77" />
+      <File FileName="CDCNPM/Controllers/HomeController.cs" Line="12" Column="14" />
+      <File FileName="CDCNPM/appsettings.Development.json" />
+      <File FileName="CDCNPM/Properties/launchSettings.json" Line="22" Column="47" />
+      <File FileName="CDCNPM/Views/Home/Details.cshtml" Line="11" Column="8" />
+      <File FileName="CDCNPM/Models/SqlTable.cs" Line="6" Column="26" />
+      <File FileName="CDCNPM/Models/SqlColumn.cs" Line="4" Column="18" />
+      <File FileName="CDCNPM/Repositories/ISqlTableRepository.cs" Line="14" Column="9" />
+      <File FileName="CDCNPM/Repositories/SqlTableRepositoryImpl.cs" Line="41" Column="1" />
+      <File FileName="CDCNPM/Repositories/HashMap.cs" />
+      <File FileName="CDCNPM/Models/Query.cs" Line="6" Column="29" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CDCNPM" expanded="True">
+            <Node name="CDCNPM" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="SqlColumn.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
