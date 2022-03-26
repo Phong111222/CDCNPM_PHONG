@@ -42,10 +42,9 @@ namespace CDCNPM
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseStaticFiles();
+            app.UseMvc();
 
-            app.UseMvcWithDefaultRoute();
-         
         }
     }
 }

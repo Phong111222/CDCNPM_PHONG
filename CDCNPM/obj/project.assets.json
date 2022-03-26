@@ -454,24 +454,28 @@
     ]
   },
   "packageFolders": {
-    "/Users/tienphongsmacbook/.nuget/packages/": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tienphongsmacbook/Documents/CDCNPM/CDCNPM/CDCNPM/CDCNPM.csproj",
+      "projectUniqueName": "D:\\C#\\ProjectLzPhong\\CDCNPM_PHONG\\CDCNPM\\CDCNPM.csproj",
       "projectName": "CDCNPM",
-      "projectPath": "/Users/tienphongsmacbook/Documents/CDCNPM/CDCNPM/CDCNPM/CDCNPM.csproj",
-      "packagesPath": "/Users/tienphongsmacbook/.nuget/packages/",
-      "outputPath": "/Users/tienphongsmacbook/Documents/CDCNPM/CDCNPM/CDCNPM/obj/",
+      "projectPath": "D:\\C#\\ProjectLzPhong\\CDCNPM_PHONG\\CDCNPM\\CDCNPM.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\C#\\ProjectLzPhong\\CDCNPM_PHONG\\CDCNPM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/tienphongsmacbook/.config/NuGet/NuGet.Config"
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 20.1\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -513,7 +517,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }

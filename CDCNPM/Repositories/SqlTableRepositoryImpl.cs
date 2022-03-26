@@ -15,7 +15,6 @@ namespace CDCNPM.Repositories
 
         }
 
-      
         public SqlConnection GetSqlConnection(IConfiguration configuration)
         {
             string connection_string = configuration.GetConnectionString("MSSQLConnection");
@@ -40,7 +39,7 @@ namespace CDCNPM.Repositories
 
             connection.Open();
 
-            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(query, connection);
 
             SqlDataReader result = sqlCommand.ExecuteReader();
             if (result.HasRows)
@@ -63,25 +62,28 @@ namespace CDCNPM.Repositories
             return tables;
         }
 
-        List<SqlColumn> ISqlTableRepository.getColsInTable(IConfiguration configuration, string table_name)
+        List<SqlColumn> ISqlTableRepository.getColsInTable(IConfiguration configuration, string the_table_name)
         {
-            if (table_name == null)
+            SqlConnection connection = GetSqlConnection(configuration);
+
+            if (the_table_name == null)
             {
                 return null;
             }
 
-            SqlTable table = new SqlTable() { table_name = table_name };
+            List<SqlColumn> columns = new List<SqlColumn>();
 
-            table.columns = new List<SqlColumn>();
 
             try
             {
-                GetSqlConnection(configuration).Open();
+                connection.Open();
 
                 string queryString = String.Format(
-                  "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = {0}", table.table_name);
+                  "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{0}'", the_table_name);
 
-                SqlCommand sqlCommand = new SqlCommand(queryString, GetSqlConnection(configuration));
+                SqlCommand sqlCommand = new SqlCommand(queryString, connection);
+
+                System.Diagnostics.Debug.WriteLine(queryString);
 
                 SqlDataReader result = sqlCommand.ExecuteReader();
 
@@ -92,13 +94,11 @@ namespace CDCNPM.Repositories
                     {
                         SqlColumn column = new SqlColumn()
                         {
-                            column_name = result.GetString(2)
-
-                              ,
-                            talbe_name = table.table_name
+                            column_name = result.GetString(3),
+                            talbe_name = the_table_name
                         };
 
-                        table.columns.Add(column);
+                        columns.Add(column);
                     }
                     result.Close();
                 }
@@ -107,12 +107,13 @@ namespace CDCNPM.Repositories
                     result.Close();
                 }
 
-                GetSqlConnection(configuration).Close();
-                return table.columns;
+                connection.Close();
+                return columns;
 
             }
             catch (Exception exception)
             {
+                connection.Close();
                 System.Diagnostics.Debug.WriteLine(exception.StackTrace);
                 return null;
 

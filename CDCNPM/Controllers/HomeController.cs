@@ -20,11 +20,32 @@ namespace CDCNPM.Controllers
             this._sqlTableRepository = sqltableRepository;
             this._configuration = configuration;
         }
-
-        [Route("test")]
-        public JsonResult test()
+        [Route("~/")]
+        [Route("homepage")]
+        public ViewResult HomePage()
         {
-            return Json(this._sqlTableRepository.getListFKsByTable(_configuration,"CTDDH"));
+            List<SqlTable> dataTables = new List<SqlTable>();
+
+
+            /**
+             * get list table name 
+             **/
+            dataTables = _sqlTableRepository.getAllTables(_configuration);
+
+            /**
+             * get list column of each table 
+             * get list PKS of each table 
+             * get list FKS of each table 
+             **/
+
+            foreach (SqlTable table in dataTables)
+            {
+                table.columns = _sqlTableRepository.getColsInTable(_configuration, table.table_name);
+                table.FKs = _sqlTableRepository.getListFKsByTable(_configuration, table.table_name);
+                table.PKs = _sqlTableRepository.getListPKsByTable(_configuration, table.table_name);
+            }
+
+            return View(dataTables);
         }
     }
 }

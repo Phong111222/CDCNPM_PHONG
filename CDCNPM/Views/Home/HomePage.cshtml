@@ -1,0 +1,66 @@
+﻿@model List<SqlTable>
+@{
+    ViewBag.pageTitle = "Index home";
+}
+<div class="flex justify-center">
+    <div>
+        @foreach (SqlTable table in Model)
+        {
+        <div class="form-check sql_table">
+            <input data-value="@table.table_name" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label inline-block text-gray-800">
+                @table.table_name
+            </label>
+
+            <div>
+                <div class="form-check sql_col">
+                    <input data-value="@table.table_name" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label inline-block text-gray-800">
+                        @table.table_name
+                    </label>
+
+                </div>
+                <div class="form-check sql_col">
+                    <input data-value="@table.table_name" class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label inline-block text-gray-800">
+                        @table.table_name
+                    </label>
+
+                </div>
+
+
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        const Model = JSON.parse('@Json.Serialize(Model)')
+
+        console.log(Model)
+
+        let checkedTables = [] 
+
+        $(".sql_table").on("click", (e) => {
+            const { checked } = e.target
+            if (checked) {
+                checkedTables.push(e.target.getAttribute("data-value"))
+            }
+            else {
+               checkedTables =  checkedTables.filter(ele => ele !== e.target.getAttribute("data-value"))
+            }
+
+            console.log(checkedTables)
+        })
+
+    </script>
+}
+
+
+
