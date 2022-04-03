@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using CDCNPM.Models;
 using Microsoft.Extensions.Configuration;
@@ -95,7 +96,7 @@ namespace CDCNPM.Repositories
                         SqlColumn column = new SqlColumn()
                         {
                             column_name = result.GetString(3),
-                            talbe_name = the_table_name
+                            table_name = the_table_name
                         };
 
                         columns.Add(column);
@@ -196,6 +197,33 @@ namespace CDCNPM.Repositories
             }
             sqlConnection.Close();
             return PKs;
+        }
+
+        public DataSet getDataRawQuery(IConfiguration config, string queryString)
+        {
+            SqlConnection myConn = null;
+            DataSet result = new DataSet();
+            try
+            {
+                string conString = config.GetConnectionString("MSSQLConnection");
+                myConn = new SqlConnection(conString);
+
+                myConn.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter()
+                {
+                    SelectCommand = new SqlCommand(queryString, myConn)
+                };
+                sqlDataAdapter.Fill(result);
+            }
+            catch (Exception err)
+            {
+                result = null;
+            }
+            finally
+            {
+                if (myConn != null) myConn.Close();
+            }
+            return result;
         }
     }
 }
